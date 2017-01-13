@@ -63,7 +63,7 @@ public class UpdatePlayerCardServiceImpl implements UpdatePlayerCardService {
 		
 		//redis  缓存处理
 			
-		String key = p.getId().toString();
+		String key ="uid."+ p.getId().toString();
 		Object playerCard = redisTemplate.opsForHash().get(key, "card");
 		if(playerCard!=null){
 		   Map<String, String> map = new HashMap<>();

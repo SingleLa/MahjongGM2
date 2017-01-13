@@ -61,7 +61,7 @@ public class MybatisRedisCache implements Cache{
         return readWriteLock;  
     }  
     protected  static Jedis createReids(){  
-        JedisPool pool = new JedisPool(new JedisPoolConfig(), "10.12.162.85");  
+        JedisPool pool = new JedisPool(new JedisPoolConfig(), "127.0.0.1");  
         return pool.getResource();  
     }  
 }
