@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rafotech.GM.IDao.ICardDao" >
+  <resultMap id="BaseResultMap" type="com.rafotech.GM.DB.Model.Card" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="card" property="card" jdbcType="INTEGER" />
+    <result column="award" property="award" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, card, award, createTime
+  </sql>
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_card
+   	order by
+   	card desc
+  </select>
+ 
+ 
+ 
+ 
+ 
+</mapper>

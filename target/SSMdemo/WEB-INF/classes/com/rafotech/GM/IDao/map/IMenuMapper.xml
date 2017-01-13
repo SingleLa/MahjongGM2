@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rafotech.GM.IDao.IMenuDao" >
+  <resultMap id="BaseResultMap" type="com.rafotech.GM.DB.Model.Menu" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
+    <result column="menu_url" property="menuUrl" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="parent" property="parent" jdbcType="INTEGER" />
+  </resultMap>
+  
+    <resultMap id="menuBean" type="com.rafotech.GM.IDao.Bean.MenuBean"  extends="BaseResultMap">
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, menu_name, menu_url, state, level, parent
+  </sql>
+  <select id="getMenuByParent" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_menu
+    where id  = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="getAllMenu" resultMap="menuBean"  >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_menu
+
+  </select>
+</mapper>

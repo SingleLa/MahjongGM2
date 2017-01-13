@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rafotech.GM.DB.Dao.RoleMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.rafotech.GM.DB.Model.RoleMenu" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="menue_id" property="menueId" jdbcType="INTEGER" />
+    <result column="t_query" property="tQuery" jdbcType="INTEGER" />
+    <result column="t_add" property="tAdd" jdbcType="INTEGER" />
+    <result column="t_update" property="tUpdate" jdbcType="INTEGER" />
+    <result column="t_delete" property="tDelete" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, role_id, menue_id, t_query, t_add, t_update, t_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_role_menu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_role_menu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.rafotech.GM.DB.Model.RoleMenu" >
+    insert into tbl_role_menu (id, role_id, menue_id, 
+      t_query, t_add, t_update, 
+      t_delete)
+    values (#{id,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{menueId,jdbcType=INTEGER}, 
+      #{tQuery,jdbcType=INTEGER}, #{tAdd,jdbcType=INTEGER}, #{tUpdate,jdbcType=INTEGER}, 
+      #{tDelete,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.rafotech.GM.DB.Model.RoleMenu" >
+    insert into tbl_role_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="menueId != null" >
+        menue_id,
+      </if>
+      <if test="tQuery != null" >
+        t_query,
+      </if>
+      <if test="tAdd != null" >
+        t_add,
+      </if>
+      <if test="tUpdate != null" >
+        t_update,
+      </if>
+      <if test="tDelete != null" >
+        t_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="menueId != null" >
+        #{menueId,jdbcType=INTEGER},
+      </if>
+      <if test="tQuery != null" >
+        #{tQuery,jdbcType=INTEGER},
+      </if>
+      <if test="tAdd != null" >
+        #{tAdd,jdbcType=INTEGER},
+      </if>
+      <if test="tUpdate != null" >
+        #{tUpdate,jdbcType=INTEGER},
+      </if>
+      <if test="tDelete != null" >
+        #{tDelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rafotech.GM.DB.Model.RoleMenu" >
+    update tbl_role_menu
+    <set >
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="menueId != null" >
+        menue_id = #{menueId,jdbcType=INTEGER},
+      </if>
+      <if test="tQuery != null" >
+        t_query = #{tQuery,jdbcType=INTEGER},
+      </if>
+      <if test="tAdd != null" >
+        t_add = #{tAdd,jdbcType=INTEGER},
+      </if>
+      <if test="tUpdate != null" >
+        t_update = #{tUpdate,jdbcType=INTEGER},
+      </if>
+      <if test="tDelete != null" >
+        t_delete = #{tDelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rafotech.GM.DB.Model.RoleMenu" >
+    update tbl_role_menu
+    set role_id = #{roleId,jdbcType=INTEGER},
+      menue_id = #{menueId,jdbcType=INTEGER},
+      t_query = #{tQuery,jdbcType=INTEGER},
+      t_add = #{tAdd,jdbcType=INTEGER},
+      t_update = #{tUpdate,jdbcType=INTEGER},
+      t_delete = #{tDelete,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

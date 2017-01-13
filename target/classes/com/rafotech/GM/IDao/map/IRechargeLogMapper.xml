@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rafotech.GM.IDao.IRechargeLogDao" >
+  <resultMap id="BaseResultMap" type="com.rafotech.GM.DB.Model.RechargeLog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="sellerId" property="sellerid" jdbcType="INTEGER" />
+    <result column="buyId" property="buyid" jdbcType="INTEGER" />
+    <result column="isplayer" property="isplayer" jdbcType="INTEGER" />
+    <result column="card_num" property="cardNum" jdbcType="INTEGER" />
+    <result column="award_num" property="awardNum" jdbcType="INTEGER" />
+    <result column="percentage_num" property="percentageNum" jdbcType="INTEGER" />
+    <result column="recharge_type" property="rechargeType" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  
+   <resultMap id="RechargrLog" type="com.rafotech.GM.IDao.Bean.RechargeLogBean" extends="BaseResultMap" >
+   		 <result column="p_playerName" property="playerName" jdbcType="VARCHAR" />
+   		<association property="seller" javaType="com.rafotech.GM.IDao.Bean.UserBean"  >
+	   		 <id column="s_id" property="id" jdbcType="INTEGER" />
+		    <result column="s_userName" property="userName" jdbcType="VARCHAR" />
+		    <result column="s_name" property="name" jdbcType="VARCHAR" />
+		    <result column="s_agentType" property="agentType" jdbcType="INTEGER" />
+		</association> 
+		<association property="buyer" javaType="com.rafotech.GM.IDao.Bean.UserBean"  >
+	   		<id column="b_id" property="id" jdbcType="INTEGER" />
+		    <result column="b_userName" property="userName" jdbcType="VARCHAR" />
+		    <result column="b_name" property="name" jdbcType="VARCHAR" />
+		    <result column="b_agentType" property="agentType" jdbcType="INTEGER" />
+		</association>	
+  	</resultMap>
+  <sql id="Base_Column_List" >
+     r.id, r.sellerId, r.buyId,r.isplayer, r.card_num, r.award_num, r.percentage_num, r.recharge_type, r.create_time,
+	s.id as s_id , s.user_name as s_userName,s.name AS s_name, s.agent_type as s_agentType,
+	b.id as b_id , b.user_name as b_userName,b.name AS b_name, b.agent_type as b_agentType
+  </sql>
+   <sql id="playwe_Column_List" >
+     r.id, r.sellerId, r.buyId,r.isplayer, r.card_num, r.award_num, r.percentage_num, r.recharge_type, r.create_time,
+     s.id as s_id , s.user_name as s_userName,s.name AS s_name, s.agent_type as s_agentType,
+	 p.name as p_playerName
+  </sql>
+  <select id="getAllRechargrLog" resultMap="RechargrLog" parameterType="com.rafotech.GM.IDao.Bean.RechargeLogBean" >
+    select 
+    <include refid="Base_Column_List" />
+    from 
+    tbl_user s
+    right join    
+    tbl_recharge_log  r
+    on 
+    s.id = r.sellerId
+    left join
+    tbl_user b
+    on 
+    r.buyId = b.id
+   where 1=1
+    <if test="id != null" >
+       and r.id = #{id} 
+    </if>
+    <if test="sellerid != null" >
+       and r.sellerId = #{sellerid} 
+    </if>
+    <if test="buyid != null" >
+       and r.buyid = #{buyid} 
+    </if>
+    <if test="cardNum != null" >
+       and r.cardNum = #{cardNum} 
+    </if>
+    <if test="awardNum != null" >
+       and r.awardNum = #{awardNum} 
+    </if>
+    <if test="percentageNum != null" >
+       and r.percentageNum = #{percentageNum} 
+    </if>
+    <if test="rechargeType != null" >
+       and r.rechargeType = #{rechargeType} 
+    </if>
+  	<if test="isplayer != null" >
+       and r.isplayer = #{isplayer} 
+    </if>
+  </select>
+  <select id="getPlayerRechargrLog" resultMap="RechargrLog" parameterType="com.rafotech.GM.IDao.Bean.RechargeLogBean" >
+    select 
+    <include refid="playwe_Column_List" />
+    from 
+    mahjonggm.tbl_recharge_log r 
+    LEFT JOIN 
+    login.tbl_player p 
+    on 
+    r.buyId = p.id
+    LEFT JOIN 
+    mahjonggm.tbl_user s
+    on
+    s.id = r.sellerId
+   where 1=1
+    <if test="id != null" >
+       and r.id = #{id} 
+    </if>
+    <if test="sellerid != null" >
+       and r.sellerId = #{sellerid} 
+    </if>
+    <if test="buyid != null" >
+       and r.buyid = #{buyid} 
+    </if>
+    <if test="cardNum != null" >
+       and r.cardNum = #{cardNum} 
+    </if>
+    <if test="awardNum != null" >
+       and r.awardNum = #{awardNum} 
+    </if>
+    <if test="percentageNum != null" >
+       and r.percentageNum = #{percentageNum} 
+    </if>
+    <if test="rechargeType != null" >
+       and r.rechargeType = #{rechargeType} 
+    </if>
+  	<if test="isplayer != null" >
+       and r.isplayer = #{isplayer} 
+    </if>
+  </select>
+</mapper>

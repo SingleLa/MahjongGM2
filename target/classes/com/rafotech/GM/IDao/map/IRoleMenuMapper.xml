@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rafotech.GM.IDao.IRoleMenuDao" >
+  <resultMap id="BaseResultMap" type="com.rafotech.GM.DB.Model.RoleMenu" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="menue_id" property="menueId" jdbcType="INTEGER" />
+    <result column="t_query" property="tQuery" jdbcType="INTEGER" />
+    <result column="t_add" property="tAdd" jdbcType="INTEGER" />
+    <result column="t_update" property="tUpdate" jdbcType="INTEGER" />
+    <result column="t_delete" property="tDelete" jdbcType="INTEGER" />
+  </resultMap>
+  
+    <resultMap id="RoleMenuMap" type="com.rafotech.GM.IDao.Bean.RoleMenuBean" extends="BaseResultMap">
+    <!--association的嵌套的结果映射方式。 -->
+		<association property="menu" javaType="com.rafotech.GM.DB.Model.Menu" >
+			<id column="mid" property="id" jdbcType="INTEGER" />
+		    <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
+		    <result column="menu_url" property="menuUrl" jdbcType="VARCHAR" />
+		    <result column="state" property="state" jdbcType="INTEGER" />
+		    <result column="level" property="level" jdbcType="INTEGER" />
+	    	<result column="parent" property="parent" jdbcType="INTEGER" />
+		</association> 
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rm.id, rm.role_id, rm.menue_id, rm.t_query, rm.t_add, rm.t_update, rm.t_delete,
+    m.id as mid, m.menu_name, m.menu_url, m.state, m.level, m.parent
+  </sql>
+  <select id="getRoleMenuBeanByRoleId" resultMap="RoleMenuMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_menu m
+    right join 
+    tbl_role_menu rm
+    on    
+    m.id = rm.menue_id 
+    where rm.role_id  in    
+    <foreach collection="array" item="roleId" index="index"
+      open="(" close=")" separator=",">
+      #{roleId}
+    </foreach>
+  </select>
+   <select id="getByRoleMenuId" resultMap="RoleMenuMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_menu m
+    right join 
+    tbl_role_menu rm
+    on    
+    m.id = rm.menue_id 
+    where rm.id =  #{roleMenuId}    
+  </select>
+     <select id="getByRoleMenu" resultMap="BaseResultMap" parameterType="com.rafotech.GM.IDao.Bean.RoleMenuBean" >
+    select 
+    *
+    from
+    tbl_role_menu    
+    where  1=1
+     <if test="id != null" >
+       and  id = #{id}
+      </if>
+      <if test="roleId != null" >
+       and  role_id = #{roleId}
+      </if>
+      <if test="menueId != null" >
+       and  menue_id = #{menueId}
+      </if>
+      <if test="tQuery != null" >
+       and  t_query = #{tQuery}
+      </if>
+      <if test="tAdd != null" >
+       and  t_add = #{tAdd}
+      </if>
+      <if test="tUpdate != null" >
+       and  t_update = #{tUpdate}
+      </if>
+       <if test="tDelete != null" >
+       and  t_delete = #{tDelete}
+      </if>
+  </select>
+   <delete id="deleteRoleMenu"  parameterType="com.rafotech.GM.IDao.Bean.RoleMenuBean" >
+    delete
+    from
+    tbl_role_menu    
+    where  1=1
+     <if test="id != null" >
+       and  id = #{id}
+      </if>
+      <if test="roleId != null" >
+       and  role_id = #{roleId}
+      </if>
+      <if test="menueId != null" >
+       and  menue_id = #{menueId}
+      </if>
+      <if test="tQuery != null" >
+       and  t_query = #{tQuery}
+      </if>
+      <if test="tAdd != null" >
+       and  t_add = #{tAdd}
+      </if>
+      <if test="tUpdate != null" >
+       and  t_update = #{tUpdate}
+      </if>
+       <if test="tDelete != null" >
+       and  t_delete = #{tDelete}
+      </if>
+  </delete>
+  
+</mapper>

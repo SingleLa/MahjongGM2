@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="MahjongGM"
+  id="myeclipse.1477897652776"
+  context-root="/MahjongGM"
+  j2ee-spec="1.7"
+  archive="MahjongGM.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+

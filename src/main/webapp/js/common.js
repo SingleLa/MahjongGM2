@@ -1,0 +1,17 @@
+document.write("<script language='javascript' src='../assets/js/ace/elements.scroller.js'></script>");
+document.write("<script language='javascript' src='../assets/js/ace/elements.fileinput.js'></script>");
+document.write("<script language='javascript' src='../assets/js/ace/elements.typeahead.js'></script>");
+document.write("<script language='javascript' src='../assets/js/ace/elements.wysiwyg.js'></script>");
+document.write("<script language='javascript' src='../assets/js/ace/elements.spinner.js'></script>");
+document.write("<script language='javascript' src='../assets/js/ace/elements.treeview.js'></script>");
+document.write("<script language='javascript' src='../assets/js/ace/elements.wizard.js'></script>");
+document.write("<script language='javascript' src='../assets/js/ace/elements.aside.js'></script>");
+document.write("<script language='javascript' src='../assets/js/ace/ace.js'></script>");
+document.write("<script language='javascript' src='../assets/js/ace/ace.ajax-content.js'></script>");
+document.write("<script language='javascript' src='../assets/js/ace/ace.ajax-content.js'></script>");
+document.write("<script language='javascript' src='../assets/js/ace/ace.ajax-content.js'></script>");
+document.write("<script language='javascript' src='../assets/js/ace/ace.ajax-content.js'></script>");
+document.write("<script language='javascript' src='../assets/js/ace/ace.ajax-content.js'></script>");
+document.write("<script language='javascript' src='../assets/js/ace/ace.ajax-content.js'></script>");
+document.write("<script language='javascript' src='../assets/js/ace/ace.ajax-content.js'></script>");
+document.write("<script language='javascript' src='../assets/js/ace/ace.ajax-content.js'></script>");

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rafotech.GM.DB.Dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.rafotech.GM.DB.Model.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="area_id" property="areaId" jdbcType="INTEGER" />
+    <result column="agent_type" property="agentType" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="csid" property="csid" jdbcType="INTEGER" />
+    <result column="createrid" property="createrid" jdbcType="INTEGER" />
+    <result column="card" property="card" jdbcType="INTEGER" />
+    <result column="card_base_count" property="cardBaseCount" jdbcType="INTEGER" />
+    <result column="card_award_count" property="cardAwardCount" jdbcType="INTEGER" />
+    <result column="card_compensate_count" property="cardCompensateCount" jdbcType="INTEGER" />
+    <result column="usecard" property="usecard" jdbcType="INTEGER" />
+    <result column="consume_card" property="consumeCard" jdbcType="INTEGER" />
+    <result column="weixin" property="weixin" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_name, password, area_id, agent_type, name, csid, createrid, card, card_base_count, 
+    card_award_count, card_compensate_count, usecard, consume_card, weixin, status, updatetime, 
+    createtime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.rafotech.GM.DB.Model.User" >
+    insert into tbl_user (id, user_name, password, 
+      area_id, agent_type, name, 
+      csid, createrid, card, 
+      card_base_count, card_award_count, card_compensate_count, 
+      usecard, consume_card, weixin, 
+      status, updatetime, createtime
+      )
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{areaId,jdbcType=INTEGER}, #{agentType,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{csid,jdbcType=INTEGER}, #{createrid,jdbcType=INTEGER}, #{card,jdbcType=INTEGER}, 
+      #{cardBaseCount,jdbcType=INTEGER}, #{cardAwardCount,jdbcType=INTEGER}, #{cardCompensateCount,jdbcType=INTEGER}, 
+      #{usecard,jdbcType=INTEGER}, #{consumeCard,jdbcType=INTEGER}, #{weixin,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{updatetime,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.rafotech.GM.DB.Model.User" >
+    insert into tbl_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="areaId != null" >
+        area_id,
+      </if>
+      <if test="agentType != null" >
+        agent_type,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="csid != null" >
+        csid,
+      </if>
+      <if test="createrid != null" >
+        createrid,
+      </if>
+      <if test="card != null" >
+        card,
+      </if>
+      <if test="cardBaseCount != null" >
+        card_base_count,
+      </if>
+      <if test="cardAwardCount != null" >
+        card_award_count,
+      </if>
+      <if test="cardCompensateCount != null" >
+        card_compensate_count,
+      </if>
+      <if test="usecard != null" >
+        usecard,
+      </if>
+      <if test="consumeCard != null" >
+        consume_card,
+      </if>
+      <if test="weixin != null" >
+        weixin,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null" >
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="agentType != null" >
+        #{agentType,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="csid != null" >
+        #{csid,jdbcType=INTEGER},
+      </if>
+      <if test="createrid != null" >
+        #{createrid,jdbcType=INTEGER},
+      </if>
+      <if test="card != null" >
+        #{card,jdbcType=INTEGER},
+      </if>
+      <if test="cardBaseCount != null" >
+        #{cardBaseCount,jdbcType=INTEGER},
+      </if>
+      <if test="cardAwardCount != null" >
+        #{cardAwardCount,jdbcType=INTEGER},
+      </if>
+      <if test="cardCompensateCount != null" >
+        #{cardCompensateCount,jdbcType=INTEGER},
+      </if>
+      <if test="usecard != null" >
+        #{usecard,jdbcType=INTEGER},
+      </if>
+      <if test="consumeCard != null" >
+        #{consumeCard,jdbcType=INTEGER},
+      </if>
+      <if test="weixin != null" >
+        #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rafotech.GM.DB.Model.User" >
+    update tbl_user
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null" >
+        area_id = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="agentType != null" >
+        agent_type = #{agentType,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="csid != null" >
+        csid = #{csid,jdbcType=INTEGER},
+      </if>
+      <if test="createrid != null" >
+        createrid = #{createrid,jdbcType=INTEGER},
+      </if>
+      <if test="card != null" >
+        card = #{card,jdbcType=INTEGER},
+      </if>
+      <if test="cardBaseCount != null" >
+        card_base_count = #{cardBaseCount,jdbcType=INTEGER},
+      </if>
+      <if test="cardAwardCount != null" >
+        card_award_count = #{cardAwardCount,jdbcType=INTEGER},
+      </if>
+      <if test="cardCompensateCount != null" >
+        card_compensate_count = #{cardCompensateCount,jdbcType=INTEGER},
+      </if>
+      <if test="usecard != null" >
+        usecard = #{usecard,jdbcType=INTEGER},
+      </if>
+      <if test="consumeCard != null" >
+        consume_card = #{consumeCard,jdbcType=INTEGER},
+      </if>
+      <if test="weixin != null" >
+        weixin = #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rafotech.GM.DB.Model.User" >
+    update tbl_user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      area_id = #{areaId,jdbcType=INTEGER},
+      agent_type = #{agentType,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      csid = #{csid,jdbcType=INTEGER},
+      createrid = #{createrid,jdbcType=INTEGER},
+      card = #{card,jdbcType=INTEGER},
+      card_base_count = #{cardBaseCount,jdbcType=INTEGER},
+      card_award_count = #{cardAwardCount,jdbcType=INTEGER},
+      card_compensate_count = #{cardCompensateCount,jdbcType=INTEGER},
+      usecard = #{usecard,jdbcType=INTEGER},
+      consume_card = #{consumeCard,jdbcType=INTEGER},
+      weixin = #{weixin,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      createtime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

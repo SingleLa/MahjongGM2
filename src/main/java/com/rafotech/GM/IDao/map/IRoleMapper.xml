@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rafotech.GM.IDao.IRoleDao" >
+  <resultMap id="BaseResultMap" type="com.rafotech.GM.IDao.Bean.RoleBean" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="role_authority" property="roleAuthority" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+  </resultMap>
+  
+
+  
+  <sql id="Base_Column_List" >
+    r.id, r.role_name, r.role_authority, r.state
+  </sql>
+  <select id="selectRoleByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_role r
+    right join tbl_user_role ur
+    on
+    r.id = ur.role_id    
+    where ur.user_id = #{id,jdbcType=INTEGER}
+  </select>
+  
+    <select id="getAllRole" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_role r
+   
+  </select>
+    <select id="selectByState" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_role r
+    where r.state = #{state,jdbcType=INTEGER}
+   
+  </select>
+</mapper>

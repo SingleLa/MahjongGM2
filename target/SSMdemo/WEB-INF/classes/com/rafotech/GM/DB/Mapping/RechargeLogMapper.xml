@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rafotech.GM.DB.Dao.RechargeLogMapper" >
+  <resultMap id="BaseResultMap" type="com.rafotech.GM.DB.Model.RechargeLog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="sellerId" property="sellerid" jdbcType="INTEGER" />
+    <result column="buyId" property="buyid" jdbcType="INTEGER" />
+    <result column="card_num" property="cardNum" jdbcType="INTEGER" />
+    <result column="award_num" property="awardNum" jdbcType="INTEGER" />
+    <result column="percentage_num" property="percentageNum" jdbcType="INTEGER" />
+    <result column="recharge_type" property="rechargeType" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sellerId, buyId, card_num, award_num, percentage_num, recharge_type, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_recharge_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_recharge_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.rafotech.GM.DB.Model.RechargeLog" >
+    insert into tbl_recharge_log (id, sellerId, buyId, 
+      card_num, award_num, percentage_num, 
+      recharge_type, create_time)
+    values (#{id,jdbcType=INTEGER}, #{sellerid,jdbcType=INTEGER}, #{buyid,jdbcType=INTEGER}, 
+      #{cardNum,jdbcType=INTEGER}, #{awardNum,jdbcType=INTEGER}, #{percentageNum,jdbcType=INTEGER}, 
+      #{rechargeType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.rafotech.GM.DB.Model.RechargeLog" >
+    insert into tbl_recharge_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sellerid != null" >
+        sellerId,
+      </if>
+      <if test="buyid != null" >
+        buyId,
+      </if>
+      <if test="cardNum != null" >
+        card_num,
+      </if>
+      <if test="awardNum != null" >
+        award_num,
+      </if>
+      <if test="percentageNum != null" >
+        percentage_num,
+      </if>
+      <if test="rechargeType != null" >
+        recharge_type,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sellerid != null" >
+        #{sellerid,jdbcType=INTEGER},
+      </if>
+      <if test="buyid != null" >
+        #{buyid,jdbcType=INTEGER},
+      </if>
+      <if test="cardNum != null" >
+        #{cardNum,jdbcType=INTEGER},
+      </if>
+      <if test="awardNum != null" >
+        #{awardNum,jdbcType=INTEGER},
+      </if>
+      <if test="percentageNum != null" >
+        #{percentageNum,jdbcType=INTEGER},
+      </if>
+      <if test="rechargeType != null" >
+        #{rechargeType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rafotech.GM.DB.Model.RechargeLog" >
+    update tbl_recharge_log
+    <set >
+      <if test="sellerid != null" >
+        sellerId = #{sellerid,jdbcType=INTEGER},
+      </if>
+      <if test="buyid != null" >
+        buyId = #{buyid,jdbcType=INTEGER},
+      </if>
+      <if test="cardNum != null" >
+        card_num = #{cardNum,jdbcType=INTEGER},
+      </if>
+      <if test="awardNum != null" >
+        award_num = #{awardNum,jdbcType=INTEGER},
+      </if>
+      <if test="percentageNum != null" >
+        percentage_num = #{percentageNum,jdbcType=INTEGER},
+      </if>
+      <if test="rechargeType != null" >
+        recharge_type = #{rechargeType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rafotech.GM.DB.Model.RechargeLog" >
+    update tbl_recharge_log
+    set sellerId = #{sellerid,jdbcType=INTEGER},
+      buyId = #{buyid,jdbcType=INTEGER},
+      card_num = #{cardNum,jdbcType=INTEGER},
+      award_num = #{awardNum,jdbcType=INTEGER},
+      percentage_num = #{percentageNum,jdbcType=INTEGER},
+      recharge_type = #{rechargeType,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
