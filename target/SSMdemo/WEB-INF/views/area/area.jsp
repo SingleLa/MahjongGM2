@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			                          <th>区域名称</th>
 			                          <th>区域说明</th>
 			                          <th>创建时间</th>
-			                          <th>Control</th>
+			                         
 			                        </tr>
 			                      </thead>
 			                      <tbody>
@@ -105,10 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					                          <td>${area.areaName}</td>
 					                          <td>${area.areaDescription}</td> 
 					                          <td><fmt:formatDate value="${area.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>                         
-					                          <td>
-					                              <button class="btn btn-xs btn-danger" onclick="del(${area.id})"><i class="icon-remove"></i> </button>
-					                          
-					                          </td>
+					                         
 				                        </tr> 
 									</c:forEach>
 			                                                                                                                                                                        
@@ -116,7 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			                    </table>
 			
 			                    <div class="widget-foot">
-									<button type="button" class="btn btn-primary" onclick="add()">添加区域</button>                                                                 
+									<button type="button" class="btn btn-primary" onclick="add()">添加</button>                                                                 
 			                      <div class="clearfix"></div> 
 			
 			                    </div>
@@ -147,7 +144,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								            		      <div class="widget-content">
 									                  <div class="padd">
 									
-									                    <h6>角色添加</h6>
+									                    <h6>区域添加</h6>
 									                    <hr />
 									                    <!-- Form starts.  -->
 									                     <form class="form-horizontal" role="form">																	
@@ -253,7 +250,7 @@ function del(id){
 	});	
 	}
 }
-}
+
 </script>
 
 
