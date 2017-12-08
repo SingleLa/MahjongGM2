@@ -481,7 +481,7 @@ $(function(){
 	$('#addModal').on('hidden.bs.modal', function () {
 	  // 执行一些动作...
 	  $('#addMenuId').val('');
-	  $('#roleId').val('');
+	 
 	  $("#tAdd").attr('checked',false);
 	  $("#tUpdate").attr('checked',false);
 	  $("#tDelete").attr('checked',false);
